@@ -241,11 +241,14 @@ func main() {
 
   aliens := mkAliens(aliensNumber)
 
-  for i := 0; i < 10; i++ {
+  for i := 0; i < 10000; i++ {
     for _, alien := range aliens {
       move(cities, alien)
     }
     aliens = filterKilled(aliens)
+    if len(aliens) == 0 {
+      break;
+    }
   }
 
   filterDestroyedCities(cities)

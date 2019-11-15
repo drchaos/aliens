@@ -146,6 +146,7 @@ func destroyCity(cities Cities, city *City, alien *Alien) {
 
 func move(cities Cities, alien *Alien) {
   if alien.residence == "" {
+    // Initial appear on the map
     alien.residence = getRandomCity(cities)
     curCity := cities[alien.residence]
     if curCity.alien != nil {
@@ -154,6 +155,7 @@ func move(cities Cities, alien *Alien) {
       curCity.alien = alien
     }
   } else {
+    // Moving to another city
     if alien.isKilled {
       return
     }
@@ -170,6 +172,7 @@ func move(cities Cities, alien *Alien) {
       if ok == true {
         break;
       }
+      // remove unexistent city from directions
       curCity.directions = append(curCity.directions[:i], curCity.directions[i+1:]...)
     }
 
